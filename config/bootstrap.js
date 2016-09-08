@@ -22,9 +22,10 @@ module.exports.bootstrap = function (cb) {
           console.log("Error: " + err);
           return;
         }
-  	    console.log("Default user created");
-        console.log("- username: " + user.email);
-        console.log("- password: password");
+        console.log("Default user created");
+        console.log("- name: " + user.name);
+        console.log("- email: " + user.email);
+        console.log("- password: " + user.password);
       });
     } else {
       console.log('Default user already exists');
