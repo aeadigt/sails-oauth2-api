@@ -1,21 +1,19 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <title>Auth_service</title>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="styles/bootstrap.min.css">
     <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+	<script id="user_template" type="text/template">
+		<strong><%= name %></strong> <%= email %>
+	</script>
     <script src="js/jquery.js"></script>
     <script src="js/underscore.js"></script>
     <script src="js/backbone.js"></script>
-</head>
-<body>
-    <div id="header">
-      HEADER
-    </div>
-    <div id="main" class="container content">
-      MAIN
-    </div>
+    <script src="js/main.js"></script>
 </body>
 </html>
