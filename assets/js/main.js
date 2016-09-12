@@ -37,8 +37,7 @@
             app.collections.user = new userCollection();
             app.collections.user.fetch({
                 success: function(model, res) {
-                    var usersList = new usersView({collection: app.collections.user});
-                    $(document.body).append(usersList.render().el);
+                    createUsersView();
                 }
             });
         }
@@ -50,6 +49,12 @@
             return _.template( $('#' + id).html() );
         }
 
+        // Создать представление пользователей
+        function createUsersView() {
+            var usersList = new usersView({collection: app.collections.user});
+            $(document.body).append(usersList.render().el);
+        }
+
         // Генерация таблицы пользователей
         var usersView = Backbone.View.extend({
             tagName: 'ul',
@@ -57,7 +62,6 @@
             },
             render: function() {
                 this.collection.each( function(user) {
-                    console.log(user);
                     var userLine = new userView({model: user})
                     this.$el.append(userLine.render().el);
                 }, this);
