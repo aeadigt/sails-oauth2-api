@@ -4,7 +4,7 @@
 
         // ********************** Var ********************** //
         // Приложение
-        window.App = {
+        var App = {
             Models: {},
             Collections: {},
             Views: {}
@@ -12,44 +12,60 @@
 
 
         // ********************** Model ********************** //
-        // Модель задача
-        App.Models.Task = Backbone.Model.extend({
-            validate: function(attrs) {
-                if ( ! $.trim(attrs.title) ) {
-                    return 'Имя задачи должно быть валидным!';
-                }
+        // Получить все модели
+        function getAllModels() {
+            $.ajax({
+                url: "/backbonemodel",
+                success: saveAllModels
+            });
+        }
+
+        // Сохранить все модели
+        function saveAllModels(models) {
+            for (var key in models) {
+                App.Models[models[key].name] = Backbone.Model.extend(models[key]);
             }
-        });
+            createUserCollection();
+        }
 
 
         // ********************** Collection ********************** //
-        // Коллекция задач
-        App.Collections.Task = Backbone.Collection.extend({
-            model: App.Models.Task
-        });
+        // Создать коллекцию моделей User
+        function createUserCollection() {
+            var userCollection = Backbone.Collection.extend({
+                model: App.Models.User,
+                url: '/user'
+            });
+            App.Collections.User = new userCollection();
+            App.Collections.User.fetch({
+                success: function(model, res) {
+                    createUsersView();
+                }
+            });
+        }
 
 
         // ********************** View ********************** //
         // Шаблон
-        window.template = function(id) {
+        var template = function(id) {
             return _.template( $('#' + id).html() );
         }
 
         // Представление одной задачи
-        App.Views.Task = Backbone.View.extend({
+        App.Views.User = Backbone.View.extend({
             initialize: function() {
                 this.model.on('change', this.render, this);
                 this.model.on('destroy', this.remove, this);
             },
             tagName: 'li',
-            template: template('task_template'),
+            template: template('user_template'),
             render: function() {
                 var template = this.template( this.model.toJSON() );
                 this.$el.html(template);
                 return this;
             },
             events: {
-                'click .edit': 'editTask',
+                'click .edit': 'editUser',
                 'click .delete': 'destroy'
             },
             destroy: function() {
@@ -58,14 +74,15 @@
             remove: function() {
                 this.$el.remove();
             },
-            editTask: function() {
-                var newTaskTitle = prompt( 'Как переименуем задачу?', this.model.get('title') );
-                this.model.set({"title": newTaskTitle}, {validate: true});﻿
+            editUser: function() {
+                var newUserName = prompt( 'Введите новое имя', this.model.get('name') );
+                this.model.set({"name": newUserName}, {validate: true});﻿
+                this.model.save();
             }
         });
 
         // Представление списка задач
-        App.Views.Tasks = Backbone.View.extend({
+        App.Views.Users = Backbone.View.extend({
             tagName: 'ul',
             initialize: function() {
                 this.collection.on('add', this.addOne, this);
@@ -74,18 +91,18 @@
                 this.collection.each(this.addOne, this);
                 return this;
             },
-            addOne: function(task) {
+            addOne: function(user) {
                 // Создавать новый дочерний вид
-                var taskView = new App.Views.Task({ model: task });
+                var userView = new App.Views.User({ model: user });
 
                 // Добавлять его в корневой элемент
-                this.$el.append(taskView.render().el)
+                this.$el.append(userView.render().el)
             }
         });
 
         // Добавление задач
-        App.Views.AddTask = Backbone.View.extend({
-            el: '#add_task',
+        App.Views.AddUser = Backbone.View.extend({
+            el: '#add_user',
             events: {
                 'submit': 'submit'
             },
@@ -93,42 +110,23 @@
             },
             submit: function(e) {
                 e.preventDefault();
-                var newTaskTitle = $(e.currentTarget).find('input[type=text]').val();
-                var newTask = new App.Models.Task({ title: newTaskTitle });
-                this.collection.add(newTask);
+                var newUserName = $(e.currentTarget).find('input[type=text]').val();
+                var newUser = new App.Models.User({ name: newUserName, email: newUserName + "@gmail.ru" });
+                this.collection.add(newUser);
+                newUser.save();
             }
         });
+
+        // Создать представление пользователей
+        function createUsersView() {
+            var userView = new App.Views.Users({collection: App.Collections.User});
+            var addUserView = new App.Views.AddUser({ collection: App.Collections.User });
+            $('.users').html(userView.render().el);
+        }
 
 
         // ********************** Create ********************** //
-        // Создание экземпляра коллекции задачи
-        window.tasksCollection = new App.Collections.Task([
-            {
-                title: 'Сходить в магазин',
-                priority: 4
-            },
-            {
-                title: 'Получить почту',
-                priority: 3
-            },
-            {
-                title: 'Сходить на работу',
-                priority: 5
-            }
-        ]);
-
-        // Отрисовка списка задач
-        var tasksView = new App.Views.Tasks({
-            collection: tasksCollection
-        });
-
-        $('.tasks').html(tasksView.render().el);
-
-        var addTaskView = new App.Views.AddTask({ collection: tasksCollection });
-
-
-
-
+        getAllModels();
 
 
 
@@ -145,7 +143,7 @@
 
         // ********************** Model ********************** //
         // Получить все модели
-        function getAllModels(cb) {
+        function getAllModels() {
             $.ajax({
                 url: "/backbonemodel",
                 success: saveAllModels
