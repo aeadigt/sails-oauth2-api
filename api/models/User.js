@@ -11,7 +11,7 @@ var bcrypt = require('bcrypt-nodejs');
 module.exports = {
 
   attributes: {
-  	name: {
+        name: {
             type: 'string',
             required: true
         },

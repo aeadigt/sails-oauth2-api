@@ -6,16 +6,19 @@
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="styles/bootstrap.min.css">
     <link rel="stylesheet" href="styles/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="styles/bbGrid.css">
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
     <div id="users" class="users">
+        <!--
         <h1>Таблица пользователи</h1>
         <form action="" id="add_user">
             <input class="form-control user_name" type="text" name="name" placeholder="Имя пользователя">
             <input class="form-control user_email" type="text"  name="email" placeholder="Эл. Почта">
             <input class="btn btn-success" type="submit" value="Добавить">
         </form>
+        -->
         <div id="users_table">
             <script id="users_template" type="text/template">
                 <tbody>
@@ -35,10 +38,14 @@
             </script>
         </div>
     </div>
+    <div id="users2" class="users">
+    </div>
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/underscore.js"></script>
     <script src="js/backbone.js"></script>
+    <script src="js/backbone-forms.min.js"></script>
+    <script src="js/bbGrid.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
