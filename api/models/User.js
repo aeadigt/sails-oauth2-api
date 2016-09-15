@@ -17,7 +17,9 @@ module.exports = {
         },
         email: {
             type: 'string',
-            required: true
+            required: true,
+            email: true,
+            unique: true
         },
         hashedPassword: {
             type: 'string',
