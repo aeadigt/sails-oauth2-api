@@ -42,8 +42,8 @@
         // Создать коллекцию моделей User
         function createUserCollection() {
             var userCollection = Backbone.Collection.extend({
-                model: App.Models.User,
-                url: '/user'
+                model: App.Models.Users,
+                url: '/users'
             });
             App.Collections.User = new userCollection();
             App.Collections.User.fetch({
@@ -80,7 +80,7 @@
                         'title': 'Добавить',
                         'classBtn': 'btn-success',
                         onClick: function(event) {
-                            var newUserModel = new App.Models.User();
+                            var newUserModel = new App.Models.Users();
                             newUserModel.set("schema", userSchema);
                             newUserModel.set("collection", App.Collections.User);
                             new App.Views.Form({
