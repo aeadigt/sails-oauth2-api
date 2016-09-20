@@ -10,35 +10,22 @@
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-    <div id="users" class="users">
-        <!--
-        <h1>Таблица пользователи</h1>
-        <form action="" id="add_user">
-            <input class="form-control user_name" type="text" name="name" placeholder="Имя пользователя">
-            <input class="form-control user_email" type="text"  name="email" placeholder="Эл. Почта">
-            <input class="btn btn-success" type="submit" value="Добавить">
-        </form>
-        -->
-        <div id="users_table">
-            <script id="users_template" type="text/template">
-                <tbody>
-                    <tr class="success">
-                        <th>Имя</th>
-                        <th>Эл. почта</th>
-                        <th>Редактировать</th>
-                        <th>Удалить</th>
-                    </tr>
-                </tbody>
-            </script>
-            <script id="user_template" type="text/template">
-                <th><%= name %></th>
-                <th><%= email %></th>
-                <th><button class="edit btn btn-primary">Редактировать</button></th>
-                <th><button class="delete btn btn-danger">Удалить</button></th>
-            </script>
-        </div>
-    </div>
-    <div id="users2" class="users">
+    <div id="user">
+        <script id="modalFormTemplate" type="text/template">
+            <div class="modal-dialog">
+               <div class="modal-content">
+                   <div class="modal-header">
+                       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                       <h4 class="modal-title" id="modalLabel">Форма добавления</h4>
+                 </div>
+                 <div class="modal-body"></div>
+                 <div class="modal-footer">
+                   <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                   <button type="button" class="btn btn-success save">Сохранить</button>
+                 </div>
+               </div>
+           </div>
+        </script>
     </div>
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
