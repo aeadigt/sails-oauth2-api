@@ -44,6 +44,13 @@ module.exports = {
         hashedPassword: {
             type: 'string',
         },
+        activated_code: {
+          type: 'string',
+          unique: true
+        },
+        activeted: {
+          type: 'boolean'
+        },
         // Override toJSON method to remove password from API
         toJSON: function() {
           var obj = this.toObject();
