@@ -12,9 +12,9 @@ module.exports.routes = {
 
   // Client authorization endPoints 
 
-  '/': {
-    view: 'index'
-  },
+//  '/': {
+//    view: 'index'
+//  },
   'get /login': {
     view: 'login'
   },

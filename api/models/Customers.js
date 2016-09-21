@@ -23,6 +23,7 @@ module.exports = {
         required: true,
         unique: true
     },
-    apps: 'Apps'
+    apps: 'Text'
+//    apps: 'Apps'
   }
 };

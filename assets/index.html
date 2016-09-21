@@ -10,23 +10,28 @@
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-    <div id="user">
-        <script id="modalFormTemplate" type="text/template">
-            <div class="modal-dialog">
-               <div class="modal-content">
-                   <div class="modal-header">
-                       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                       <h4 class="modal-title" id="modalLabel">Форма добавления</h4>
-                 </div>
-                 <div class="modal-body"></div>
-                 <div class="modal-footer">
-                   <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
-                   <button type="button" class="btn btn-success save">Сохранить</button>
-                 </div>
-               </div>
+    <script id="modalFormTemplate" type="text/template">
+        <div class="modal-dialog">
+           <div class="modal-content">
+               <div class="modal-header">
+                   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                   <h4 class="modal-title" id="modalLabel">Форма добавления</h4>
+             </div>
+             <div class="modal-body"></div>
+             <div class="modal-footer">
+               <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+               <button type="button" class="btn btn-success save">Сохранить</button>
+             </div>
            </div>
-        </script>
-    </div>
+       </div>
+    </script>
+    <div id="users"></div>
+    <div id="apps"></div>
+    <div id="clients"></div>
+    <div id="customers"></div>
+    <div id="grants"></div>
+    <div id="invites"></div>
+    <div id="roles"></div>
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/underscore.js"></script>

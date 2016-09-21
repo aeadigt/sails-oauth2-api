@@ -8,7 +8,7 @@
 module.exports = {
 
   attributes: {
-  	app_id: {
+    app_id: {
         type: 'string',
         required: true,
         unique: true
@@ -17,7 +17,7 @@ module.exports = {
         type: 'string',
         required: true
     },
-    clients: 'Clients'
+    clients: 'Text'
+//    clients: 'Clients'
   }
 };
-

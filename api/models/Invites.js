@@ -19,8 +19,10 @@ module.exports = {
         required: true,
         unique: true
     },
-    customer_id: 'Customers',
-    app_id: 'Apps',
+    customer_id: 'Text',
+//    customer_id: 'Customers',
+    app_id: 'Text',
+//    app_id: 'Apps',
     invite_code: {
         type: 'string',
         required: true,
