@@ -17,6 +17,13 @@ module.exports = {
         type: 'string',
         required: true,
         unique: true
+    },
+    callback: {
+        type: 'string'
+    },
+    redirect: {
+        type: 'string',
+        required: true
     }
   }
 };

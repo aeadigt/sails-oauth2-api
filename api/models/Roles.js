@@ -8,12 +8,15 @@
 module.exports = {
 
   attributes: {
-    customer_id: 'Text',
-    //customer_id: 'Customers',
-    app_id: 'Text',
-    //app_id: 'Apps',
-    user_id: 'Text',
-    //user_id: 'Users',
+    customer_id: {
+        model: 'Customers'
+    },
+    app_id: {
+        model: 'Apps'
+    },
+    user_id: {
+        model: 'Users'
+    },
     role: {
         type: 'string',
         required: true

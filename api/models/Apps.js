@@ -17,7 +17,8 @@ module.exports = {
         type: 'string',
         required: true
     },
-    clients: 'Text'
-//    clients: 'Clients'
+    clients: {
+        model: 'Clients'
+    }
   }
 };

@@ -23,7 +23,14 @@ module.exports = {
         required: true,
         unique: true
     },
-    apps: 'Text'
-//    apps: 'Apps'
+    apps: {
+        model: 'Apps'
+    },
+    created_by: {
+        type: 'string'
+    },
+    updated_by: {
+        type: 'string'
+    }
   }
 };

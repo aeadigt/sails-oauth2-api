@@ -14,7 +14,11 @@
             name:       'Text',
             email:      'Text',
             activated_code: 'Text',
-            activated: 'Text'
+            activated: {
+                type: 'Checkbox'
+            },
+            created_by: 'Text',
+            updated_by: 'Text'
         };
         var appSchema = {
             app_id: 'Text',
@@ -23,13 +27,17 @@
         };
         var clientSchema = {
             client_id: 'Text',
-            client_secret: 'Text'
+            client_secret: 'Text',
+            callback: 'Text',
+            redirect: 'Text'
         };
         var customerSchema = {
             customer_id: 'Text',
             name: 'Text',
             owner: 'Text',
-            apps: 'Text'
+            apps: 'Text',
+            created_by: 'Text',
+            updated_by: 'Text'
         };
         var grantSchema = {
         };
@@ -194,8 +202,9 @@
                     { title: 'Имя',       name: 'name',  index: true, filter: true, filterType: 'input', editable: true},
                     { title: 'Эл. почта', name: 'email', index: true, filter: true},
                     { title: 'Код активации', name: 'activated_code', index: true, filter: true},
-                    { title: 'Активирован', name: 'activeted', index: true, filter: true}
-
+                    { title: 'Активирован', name: 'activated'},
+                    { title: 'created_by',       name: 'created_by',    index: true, filter: true, filterType: 'input', editable: true},
+                    { title: 'updated_by',       name: 'updated_by',    index: true, filter: true, filterType: 'input', editable: true}
                 ]
             });
         }
@@ -453,6 +462,8 @@
                 colModel: [
                     { title: 'client_id',     name: 'client_id',  index: true, filter: true},
                     { title: 'client_secret',       name: 'client_secret',    index: true, filter: true, filterType: 'input', editable: true},
+                    { title: 'callback',       name: 'callback',    index: true, filter: true, filterType: 'input', editable: true},
+                    { title: 'redirect',       name: 'redirect',    index: true, filter: true, filterType: 'input', editable: true}
                 ]
             });
         }
@@ -545,7 +556,9 @@
                     { title: 'customer_id',     name: 'customer_id',  index: true, filter: true},
                     { title: 'name',       name: 'name',    index: true, filter: true, filterType: 'input', editable: true},
                     { title: 'owner',       name: 'owner',    index: true, filter: true, filterType: 'input', editable: true},
-                    { title: 'apps',       name: 'apps',    index: true, filter: true, filterType: 'input', editable: true}
+                    { title: 'apps',       name: 'apps',    index: true, filter: true, filterType: 'input', editable: true},
+                    { title: 'created_by',       name: 'created_by',    index: true, filter: true, filterType: 'input', editable: true},
+                    { title: 'updated_by',       name: 'updated_by',    index: true, filter: true, filterType: 'input', editable: true}
                 ]
             });
         }

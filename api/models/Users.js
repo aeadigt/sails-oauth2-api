@@ -51,6 +51,12 @@ module.exports = {
         activeted: {
           type: 'boolean'
         },
+        created_by: {
+          type: 'string'
+        },
+        updated_by: {
+          type: 'string'
+        },
         // Override toJSON method to remove password from API
         toJSON: function() {
           var obj = this.toObject();
